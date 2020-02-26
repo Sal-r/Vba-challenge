@@ -5,6 +5,8 @@ Cells(1, 9).Value = "Ticker"
 Cells(1, 10).Value = "Yearly Change"
 Cells(1, 11).Value = "Percent Change"
 Cells(1, 12).Value = "Total Stock Volume"
+Range("J:J").NumberFormat = "$#,##0.00"
+Range("K:K").NumberFormat = "0.00%"
 
 'define tick letter, year change, % change, total vol, first open, last close, last y, maxcolumns
 Dim TickerLetter As String
@@ -48,8 +50,8 @@ SameTicker = 1
             'Yearly Change = (lastclose - firstopen)
             YearlyChange = LastClose - FirstOpen
             
-            'percent change = 100*((lastclose - firstopen)/firstopen)
-            PercentChange = 100 * ((LastClose - FirstOpen) / FirstOpen)
+            'percent change = ((lastclose - firstopen)/firstopen)
+            PercentChange = ((LastClose - FirstOpen) / FirstOpen)
             
             'total volume
             TotalValue = TotalValue + Cells(x, 7).Value
